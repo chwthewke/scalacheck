@@ -87,7 +87,8 @@ lazy val js = project.in(file("js"))
   .settings(
     scalaJSStage in Global := FastOptStage,
     previousArtifact := None,
-    libraryDependencies += "org.scala-js" %% "scalajs-test-interface" % scalaJSVersion
+    libraryDependencies += "org.scala-js" %% "scalajs-test-interface" % scalaJSVersion,
+    EclipseKeys.skipProject := true
   )
   .enablePlugins(ScalaJSPlugin)
 
@@ -95,5 +96,6 @@ lazy val jvm = project.in(file("jvm"))
   .settings(sharedSettings: _*)
   .settings(
     previousArtifact := None,
-    libraryDependencies += "org.scala-sbt" %  "test-interface" % "1.0"
+    libraryDependencies += "org.scala-sbt" %  "test-interface" % "1.0",
+    EclipseKeys.useProjectId := true
   )
