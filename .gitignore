@@ -18,3 +18,11 @@ target
 
 /examples/simple-sbt/project/
 /examples/simple-sbt/target/
+
+/jvm/bin
+*.class
+.project
+.settings
+.classpath
+.cache-*
+
