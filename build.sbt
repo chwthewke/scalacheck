@@ -92,7 +92,7 @@ lazy val js = project.in(file("js"))
   )
   .enablePlugins(ScalaJSPlugin)
 
-lazy val jvm = project.in(file("jvm"))
+lazy val scalacheckJvm = project.in(file("jvm"))
   .settings(sharedSettings: _*)
   .settings(
     previousArtifact := None,
