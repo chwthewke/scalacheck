@@ -1,5 +1,7 @@
 sourceDirectory := file("dummy source directory")
 
+EclipseKeys.skipProject := true
+
 lazy val versionNumber = "1.12.5"
 
 lazy val isRelease = true
@@ -87,7 +89,8 @@ lazy val js = project.in(file("js"))
   .settings(
     scalaJSStage in Global := FastOptStage,
     previousArtifact := None,
-    libraryDependencies += "org.scala-js" %% "scalajs-test-interface" % scalaJSVersion
+    libraryDependencies += "org.scala-js" %% "scalajs-test-interface" % scalaJSVersion,
+    EclipseKeys.skipProject := true
   )
   .enablePlugins(ScalaJSPlugin)
 
