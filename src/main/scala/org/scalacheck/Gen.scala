@@ -30,7 +30,7 @@ sealed trait Gen[+T] {
    *  called with a value of exactly type T, it is OK. */
   private[scalacheck] def sieveCopy(x: Any): Boolean = true
 
-  private[scalacheck] def doApply(p: P): R[T]
+  def doApply(p: P): R[T]
 
 
   //// Public interface ////
@@ -147,7 +147,7 @@ object Gen extends GenArities{
   /** Just an alias */
   private type P = Parameters
 
-  private[scalacheck] trait R[+T] {
+  trait R[+T] {
     def labels: Set[String] = Set()
     def sieve[U >: T]: U => Boolean = _ => true
     protected def result: Option[T]
@@ -177,12 +177,12 @@ object Gen extends GenArities{
     }
   }
 
-  private[scalacheck] def r[T](r: Option[T]): R[T] = new R[T] {
+  def r[T](r: Option[T]): R[T] = new R[T] {
     val result = r
   }
 
   /** Generator factory method */
-  private[scalacheck] def gen[T](f: P => R[T]): Gen[T] = new Gen[T] {
+  def gen[T](f: P => R[T]): Gen[T] = new Gen[T] {
     def doApply(p: P) = f(p)
   }
 
