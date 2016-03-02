@@ -22,7 +22,7 @@ sealed trait Gen[+T] {
   import Gen.{R, r, gen}
 
   /** Just an alias */
-  private type P = Gen.Parameters
+  type P = Gen.Parameters
 
   /** Should be a copy of R.sieve. Used internally in Gen when some generators
    *  with suchThat-claues are created (when R is not available). This method
@@ -145,7 +145,7 @@ object Gen extends GenArities{
   import Arbitrary.arbitrary
 
   /** Just an alias */
-  private type P = Parameters
+  type P = Parameters
 
   trait R[+T] {
     def labels: Set[String] = Set()
